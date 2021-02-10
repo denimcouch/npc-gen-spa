@@ -22,7 +22,7 @@ export default {
   display: flex;
   width: 400px;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   border-bottom: 1px solid #aaa;
 }
 

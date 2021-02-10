@@ -10,7 +10,8 @@ export const races = [
       "Rashemi",
       "Shou",
       "Tethyrian",
-      "Turami"]
+      "Turami"
+    ]
   },
   {
     race: "Dragonborn",
@@ -48,19 +49,20 @@ export const races = [
     subraces: ["Forest", "Rock", "Deep"]
   },
   {
-    race: "Genasi",
-    subraces: ["Earth", "Air", "Water", "Fire"]
-  },
-  {
-    race: "Goliath",
-    subraces: ""
-  },
-  {
     race: "Dwarf",
     subraces: ["Hill", "Mountain"]
-  },
-  {
-    race: "Firbolg",
-    subraces: ""
   }
+  // Races outside of the
+  // {
+  //   race: "Genasi",
+  //   subraces: ["Earth", "Air", "Water", "Fire"]
+  // },
+  // {
+  //   race: "Goliath",
+  //   subraces: ""
+  // },
+  // {
+  //   race: "Firbolg",
+  //   subraces: ""
+  // }
 ];

@@ -21,7 +21,7 @@ export default {
 .npcs {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: center;
   margin: 2rem 0;
 }

@@ -25,10 +25,11 @@
   font-weight: bold;
   color: #2c3e50;
   text-decoration: none;
+  transition: 0.2s ease-in-out;
 }
 
 #nav a:active,
 #nav a:hover {
-  color: #42b983;
+  color: #32d395;
 }
 </style>

@@ -29,3 +29,10 @@ export default {
   }
 };
 </script>
+
+<style>
+.home {
+  max-width: 1100px;
+  margin: auto;
+}
+</style>

@@ -45,8 +45,7 @@ export default {
       // Clean out any role values from previous submit
       this.role = "";
       const choice = parseInt(Math.random() * (20 - 1) + 1, 10);
-      console.log("choice = ", choice);
-      choice <= 15 ? this.isAdvent = false : this.chooseRole(); 
+      choice <= 15 ? (this.isAdvent = false) : this.chooseRole();
     },
     chooseRole() {
       this.isAdvent = true;

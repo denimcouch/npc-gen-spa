@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <CreateNpc />
+    <NPCShowcase />
     <NPCs v-bind:npcs="npcs" />
   </div>
 </template>
@@ -9,12 +10,14 @@
 // @ is an alias to /src
 // import HelloWorld from "@/components/HelloWorld.vue";
 import CreateNpc from "../components/CreateNpc";
+import NPCShowcase from "@/components/NPCShowcase";
 import NPCs from "../components/NPCs";
 
 export default {
   name: "Home",
   components: {
     CreateNpc,
+    NPCShowcase,
     NPCs
   },
   data() {

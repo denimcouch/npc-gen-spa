@@ -48,14 +48,17 @@ export default {
       this.role = roles[Math.floor(Math.random() * roles.length)];
     },
     chooseName(race) {
-      console.log("names", names);
       if (race.split(" ").length > 1) {
+        // Split the race string and only take the last index
         const raceInfo = race.split(" ")[1];
+        // Find the names object for given race
         const nameData = names.filter(nameRace => nameRace.race == raceInfo)[0];
+        // Randomly choose first name
         const firstName =
           nameData.firstNames[
             Math.floor(Math.random() * nameData.firstNames.length)
           ];
+        // Randomly choose last name
         const clanName =
           nameData.clanNames[
             Math.floor(Math.random() * nameData.clanNames.length)
@@ -65,17 +68,18 @@ export default {
         //   nameData.otherNames[
         //     Math.floor(Math.random() * nameData.otherNames.length)
         //   ];
+        
+        // Some race don't have clanNames,
+        // If that happens only submit first name to data
         clanName === undefined
           ? (this.name = firstName)
           : (this.name = firstName + " " + clanName);
       } else {
         const nameData = names.filter(nameRace => nameRace.race == race)[0];
-        console.log("else", nameData);
         this.name =
           nameData.firstNames[
             Math.floor(Math.random() * nameData.firstNames.length)
           ];
-        console.log("name else ", this.name);
       }
     }
   }

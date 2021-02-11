@@ -27,24 +27,30 @@ export default {
       this.isAdventurer();
     },
     chooseRace() {
+      // Randomly choose a race
       const raceData = races[Math.floor(Math.random() * races.length)];
+      // Isolate the array of subraces
       const subraces = raceData.subraces;
+      // Isolate the race value
       const race = raceData.race;
+      // Randomly choose a subrace
       const subrace = subraces[Math.floor(Math.random() * subraces.length)];
+      // If there is no subrace, only submit race to data
       subrace === undefined
         ? (this.race = race)
         : (this.race = subrace + " " + race);
       this.chooseName(this.race);
     },
     isAdventurer() {
+      // Clean out any role values from previous submit
       this.role = "";
-      const choice = parseInt(Math.random() * (10 - 1) + 1, 10);
+      const choice = parseInt(Math.random() * (20 - 1) + 1, 10);
       console.log("choice = ", choice);
-      choice <= 5 ? this.isAdvent = false : this.chooseRole(); 
+      choice <= 15 ? this.isAdvent = false : this.chooseRole(); 
     },
     chooseRole() {
       this.isAdvent = true;
-      console.log("roles", roles);
+      // Randomly assign a role
       this.role = roles[Math.floor(Math.random() * roles.length)];
     },
     chooseName(race) {
@@ -68,7 +74,7 @@ export default {
         //   nameData.otherNames[
         //     Math.floor(Math.random() * nameData.otherNames.length)
         //   ];
-        
+
         // Some race don't have clanNames,
         // If that happens only submit first name to data
         clanName === undefined

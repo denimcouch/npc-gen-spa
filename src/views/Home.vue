@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <CreateNpc />
-    <NPCShowcase />
+    <CreateNpc v-on:show-npc="showNPC" />
+    <NPCShowcase v-bind:newNPC="newNPC" />
     <NPCs v-bind:npcs="npcs" />
   </div>
 </template>
@@ -22,8 +22,14 @@ export default {
   },
   data() {
     return {
-      npcs: []
+      npcs: [],
+      newNPC: {}
     };
+  },
+  methods: {
+    showNPC(npc) {
+      this.newNPC = npc;
+    }
   },
   created() {
     fetch("http://127.0.0.1:8000/api/npcs/")

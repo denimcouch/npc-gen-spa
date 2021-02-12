@@ -27,6 +27,7 @@ export default {
     createNPC() {
       this.chooseRace();
       this.isAdventurer();
+      this.$emit("show-npc", this.npc);
     },
     chooseRace() {
       // Randomly choose a race
@@ -55,6 +56,9 @@ export default {
       this.npc.role = roles[Math.floor(Math.random() * roles.length)];
     },
     chooseName(race) {
+      if (race === "Half-Elf") {
+        race = "Half Elf";
+      }
       if (race.split(" ").length > 1) {
         // Split the race string and only take the last index
         const raceInfo = race.split(" ")[1];

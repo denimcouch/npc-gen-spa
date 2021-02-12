@@ -15,10 +15,12 @@ export default {
   name: "CreateNpc",
   data() {
     return {
-      name: "",
-      race: "",
-      isAdvent: false,
-      role: ""
+      npc: {
+        name: "",
+        race: "",
+        isAdvent: false,
+        role: ""
+      }
     };
   },
   methods: {
@@ -37,20 +39,20 @@ export default {
       const subrace = subraces[Math.floor(Math.random() * subraces.length)];
       // If there is no subrace, only submit race to data
       subrace === undefined
-        ? (this.race = race)
-        : (this.race = subrace + " " + race);
-      this.chooseName(this.race);
+        ? (this.npc.race = race)
+        : (this.npc.race = subrace + " " + race);
+      this.chooseName(this.npc.race);
     },
     isAdventurer() {
       // Clean out any role values from previous submit
-      this.role = "";
+      this.npc.role = "";
       const choice = parseInt(Math.random() * (20 - 1) + 1, 10);
-      choice <= 15 ? (this.isAdvent = false) : this.chooseRole();
+      choice <= 15 ? (this.npc.isAdvent = false) : this.chooseRole();
     },
     chooseRole() {
-      this.isAdvent = true;
+      this.npc.isAdvent = true;
       // Randomly assign a role
-      this.role = roles[Math.floor(Math.random() * roles.length)];
+      this.npc.role = roles[Math.floor(Math.random() * roles.length)];
     },
     chooseName(race) {
       if (race.split(" ").length > 1) {
@@ -77,11 +79,11 @@ export default {
         // Some race don't have clanNames,
         // If that happens only submit first name to data
         clanName === undefined
-          ? (this.name = firstName)
-          : (this.name = firstName + " " + clanName);
+          ? (this.npc.name = firstName)
+          : (this.npc.name = firstName + " " + clanName);
       } else {
         const nameData = names.filter(nameRace => nameRace.race == race)[0];
-        this.name =
+        this.npc.name =
           nameData.firstNames[
             Math.floor(Math.random() * nameData.firstNames.length)
           ];

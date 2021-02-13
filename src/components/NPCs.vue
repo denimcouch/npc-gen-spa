@@ -1,6 +1,6 @@
 <template>
   <div class="npcs">
-    <h1 class="npcs__title">Other NPCs</h1>
+    <h1 class="npcs__title">Other Characters</h1>
     <NPC v-bind:npc="npc" v-bind:key="npc.id" v-for="npc in npcs" />
   </div>
 </template>

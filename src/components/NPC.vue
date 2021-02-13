@@ -27,7 +27,7 @@ export default {
 }
 
 .npc--primary {
-  color: #32d395;
+  color: var(--primary-color);
   font-weight: 500;
 }
 

@@ -11,7 +11,7 @@
       <button @click="$emit('add-npc', newNPC)" class="btn btn--save">
         Save Character
       </button>
-      <button class="btn btn--delete">Clear</button>
+      <button @click="$emit('clear-npc')" class="btn btn--delete">Clear</button>
     </div>
   </div>
 </template>

@@ -1,7 +1,11 @@
 <template>
   <div class="home">
     <CreateNpc v-on:show-npc="showNPC" />
-    <NPCShowcase v-bind:newNPC="newNPC" v-on:add-npc="addNPC" />
+    <NPCShowcase
+      v-bind:newNPC="newNPC"
+      v-on:add-npc="addNPC"
+      v-on:clear-npc="clearNPC"
+    />
     <NPCs v-bind:npcs="npcs" />
   </div>
 </template>
@@ -48,6 +52,9 @@ export default {
       fetch("http://127.0.0.1:8000/api/npcs/", npcOptions)
         .then(res => res.json())
         .then(npc => (this.npcs = [...this.npcs, npc]));
+    },
+    clearNPC() {
+      this.newNPC = {};
     }
   },
   created() {

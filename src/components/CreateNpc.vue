@@ -1,7 +1,7 @@
 <template>
   <div class="form-container">
     <form @submit="createNPC" class="npc-form">
-      <input class="create-btn" type="submit" value="Create NPC" />
+      <input class="create-btn" type="submit" value="Create Character" />
     </form>
   </div>
 </template>
@@ -56,8 +56,10 @@ export default {
       this.npc.role = roles[Math.floor(Math.random() * roles.length)];
     },
     chooseName(race) {
-      if (race === "Half-Elf") {
+      if (race === "Half-Elf" && Date.now() % 2 == 0) {
         race = "Half Elf";
+      } else {
+        race = "Half Human";
       }
       if (race.split(" ").length > 1) {
         // Split the race string and only take the last index
@@ -97,17 +99,19 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+.form-container {
+  margin: 2rem 0;
+}
 .create-btn {
   display: inline-block;
   border: none;
-  padding: 1rem;
-  width: 150px;
-  height: 70px;
+  padding: 1rem 2rem;
+  height: 5rem;
   border-radius: 5px;
   font-size: 1.2rem;
   font-weight: 700;
-  background: #32d395;
+  background: var(--primary-color);
   color: #fff;
   transition: 0.2s ease-in-out;
 }

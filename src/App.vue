@@ -1,13 +1,29 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
+      <router-link to="/" v-bind:user="this.user">Home</router-link> |
       <router-link to="/about">About</router-link> |
-      <router-link to="/login">Login</router-link>
+      <router-link to="/login" v-on:login-user="loginUser">Login</router-link>
     </div>
     <router-view />
   </div>
 </template>
+
+<script>
+export default {
+  name: "App",
+  data() {
+    return {
+      user: {}
+    };
+  },
+  methods: {
+    loginUser(user) {
+      console.log("user passed up to App", user);
+    }
+  }
+};
+</script>
 
 <style>
 :root {

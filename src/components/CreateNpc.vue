@@ -1,7 +1,7 @@
 <template>
   <div class="form-container">
     <form @submit="createNPC" class="npc-form">
-      <input class="create-btn" type="submit" value="Create Character" />
+      <input class="btn create-btn" type="submit" value="Create Character" />
     </form>
   </div>
 </template>
@@ -111,8 +111,7 @@ export default {
   border-radius: 5px;
   font-size: 1.2rem;
   font-weight: 700;
-  background: var(--primary-color);
-  color: #fff;
+  border: 3px var(--primary-color) solid;
   transition: 0.2s ease-in-out;
 }
 

@@ -11,11 +11,10 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from "@/components/HelloWorld.vue";
 import CreateNpc from "../components/CreateNpc";
 import NPCShowcase from "@/components/NPCShowcase";
 import NPCs from "../components/NPCs";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Home",
@@ -24,6 +23,7 @@ export default {
     NPCShowcase,
     NPCs
   },
+  computed: mapGetters(["getUser"]),
   data() {
     return {
       npcs: [],

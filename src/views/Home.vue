@@ -66,15 +66,6 @@ export default {
 </script>
 
 <style>
-:root {
-  --primary-color: #32d395;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .home {
   max-width: 1100px;
   margin: auto;

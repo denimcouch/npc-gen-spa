@@ -71,15 +71,15 @@ export default {
   margin-bottom: 2rem;
 }
 
-#nav a {
+a {
   font-weight: bold;
   color: #2c3e50;
   text-decoration: none;
   transition: 0.2s ease-in-out;
 }
 
-#nav a:active,
-#nav a:hover {
+a:active,
+a:hover {
   color: #32d395;
 }
 

@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "UserLogin",
@@ -38,7 +38,6 @@ export default {
       }
     };
   },
-  computed: mapGetters(["getUser"]),
   methods: {
     ...mapActions(["fetchUser"]),
     loginUser() {

@@ -34,6 +34,30 @@ const actions = {
         window.localStorage.setItem("token", JSON.stringify(data.token));
         commit("setUser", data.user);
       });
+  },
+  createUser({ commit }, user) {
+    const userObj = {
+      user: {
+        username: user.username,
+        password: user.password
+      }
+    };
+
+    const postOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(userObj)
+    };
+
+    fetch("http://localhost:3000/api/users", postOptions)
+      .then(res => res.json())
+      .then(data => {
+        window.localStorage.setItem("token", JSON.stringify(data.token));
+        commit("setUser", data.user);
+      });
   }
 };
 

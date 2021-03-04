@@ -71,6 +71,10 @@ export default {
           .then(data => {
             this.saveUser(data.user);
             this.newNPC = {};
+            this.$router.push({
+              name: "Profile",
+              params: { id: data.user.username }
+            });
           });
       } else {
         this.error = "Please login to save character.";

@@ -69,11 +69,7 @@ export default {
       this.newNPC = {};
     }
   },
-  created() {
-    if (window.localStorage.getItem("token") !== null) {
-      console.log("hello!");
-    }
-  }
+  created() {}
 };
 </script>
 

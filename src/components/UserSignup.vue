@@ -70,7 +70,6 @@ export default {
           } else {
             window.localStorage.setItem("token", JSON.stringify(data.token));
             this.saveUser(data.user);
-            this.$route = "/account";
           }
         })
         .catch(error => console.log(error));

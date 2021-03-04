@@ -20,10 +20,11 @@ export default {
 
 .npc {
   display: flex;
-  width: 400px;
-  align-items: center;
-  justify-content: flex-start;
-  border-bottom: 1px solid #aaa;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  border-right: 1px solid #aaa;
+  height: 10rem;
 }
 
 .npc--primary {
@@ -33,7 +34,7 @@ export default {
 
 .npc__name {
   margin: 0 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 600;
 }
 

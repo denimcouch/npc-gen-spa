@@ -16,11 +16,6 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "App",
   computed: mapGetters(["getUser"]),
-  data() {
-    return {
-      userNav: false
-    };
-  },
   methods: {
     ...mapActions(["saveUser"]),
     checkToken() {

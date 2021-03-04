@@ -5,6 +5,7 @@
       v-bind:newNPC="newNPC"
       v-on:add-npc="addNPC"
       v-on:clear-npc="clearNPC"
+      v-if="this.newNPC.name != undefined"
     />
   </div>
 </template>
@@ -12,7 +13,7 @@
 <script>
 import CreateNpc from "../components/CreateNpc";
 import NPCShowcase from "@/components/NPCShowcase";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Home",
@@ -27,6 +28,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["saveUser"]),
     showNPC(npc) {
       this.newNPC = npc;
     },
@@ -51,9 +53,13 @@ export default {
         body: JSON.stringify(newNPC)
       };
       console.log("npcOptions", npcOptions);
-      // fetch("http://localhost:3000/api/characters", npcOptions)
-      //   .then(res => res.json())
-      //   .then(npc => (this.npcs = [...this.npcs, npc]));
+      fetch("http://localhost:3000/api/characters", npcOptions)
+        .then(res => res.json())
+        .then(data => {
+          console.log("data from POST", data.user);
+          this.saveUser(data.user);
+          this.newNPC = {};
+        });
     },
     clearNPC() {
       this.newNPC = {};

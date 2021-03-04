@@ -70,6 +70,10 @@ export default {
           } else {
             window.localStorage.setItem("token", JSON.stringify(data.token));
             this.saveUser(data.user);
+            this.$router.push({
+              name: "Profile",
+              params: { id: data.user.username }
+            });
           }
         })
         .catch(error => console.log(error));

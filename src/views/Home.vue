@@ -6,27 +6,23 @@
       v-on:add-npc="addNPC"
       v-on:clear-npc="clearNPC"
     />
-    <NPCs v-bind:npcs="npcs" />
   </div>
 </template>
 
 <script>
 import CreateNpc from "../components/CreateNpc";
 import NPCShowcase from "@/components/NPCShowcase";
-import NPCs from "../components/NPCs";
 import { mapGetters } from "vuex";
 
 export default {
   name: "Home",
   components: {
     CreateNpc,
-    NPCShowcase,
-    NPCs
+    NPCShowcase
   },
   computed: mapGetters(["getUser"]),
   data() {
     return {
-      npcs: [],
       newNPC: {}
     };
   },
@@ -35,27 +31,29 @@ export default {
       this.newNPC = npc;
     },
     addNPC() {
-      const npc = {
-        ...this.newNPC
+      const token = JSON.parse(window.localStorage.getItem("token"))
+      const newNPC = {
+        character: {
+          name: this.newNPC.name,
+          race: this.newNPC.race,
+          is_adventurer: this.newNPC.isAdvent,
+          role: this.newNPC.role,
+          user_id: this.getUser.id
+        }
       };
-      // const newNPC = {
-      //   name: this.newNPC.name,
-      //   race: this.newNPC.race,
-      //   is_advent: this.newNPC.isAdvent,
-      //   role: this.newNPC.role
-      // };
-      // const npcOptions = {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //     Accept: "application/json"
-      //   },
-      //   body: JSON.stringify(newNPC)
-      // };
+      const npcOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+          Accept: "application/json"
+        },
+        body: JSON.stringify(newNPC)
+      };
+      console.log("npcOptions", npcOptions);
       // fetch("http://localhost:3000/api/characters", npcOptions)
       //   .then(res => res.json())
       //   .then(npc => (this.npcs = [...this.npcs, npc]));
-      this.npcs = [...this.npcs, npc];
     },
     clearNPC() {
       this.newNPC = {};

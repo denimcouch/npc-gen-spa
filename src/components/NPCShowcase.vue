@@ -1,7 +1,7 @@
 <template>
   <div class="npc-showcase">
     <div class="content">
-      <h1 class="content__race">Your NPC is a {{ newNPC.race }} named</h1>
+      <h1 class="content__race">Your character is a {{ newNPC.race }} named</h1>
       <h2 class="content__name text--primary">{{ newNPC.name }}</h2>
       <p class="content__role" v-if="newNPC.isAdvent == true">
         They were once an adventuring {{ newNPC.role }}.

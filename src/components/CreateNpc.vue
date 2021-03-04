@@ -1,6 +1,6 @@
 <template>
   <div class="form-container">
-    <form @submit="createNPC" class="npc-form">
+    <form @submit.prevent="createNPC" class="npc-form">
       <input class="btn create-btn" type="submit" value="Create Character" />
     </form>
   </div>

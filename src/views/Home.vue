@@ -7,6 +7,13 @@
       v-on:clear-npc="clearNPC"
       v-if="this.newNPC.name != undefined"
     />
+    <div v-if="this.showModal" class="auth-error">
+      <h2>{{ this.error }}</h2>
+      <div class="auth-error--options">
+        <router-link class="btn" to="/login">Login</router-link>
+        <button @click="closeModal" class="btn btn--delete">Close</button>
+      </div>
+    </div>
   </main>
 </template>
 
@@ -24,7 +31,10 @@ export default {
   computed: mapGetters(["getUser"]),
   data() {
     return {
-      newNPC: {}
+      newNPC: {},
+      authorized: false,
+      showModal: false,
+      error: ""
     };
   },
   methods: {
@@ -33,43 +43,55 @@ export default {
       this.newNPC = npc;
     },
     addNPC() {
-      const token = JSON.parse(window.localStorage.getItem("token"));
-      const newNPC = {
-        character: {
-          name: this.newNPC.name,
-          race: this.newNPC.race,
-          is_adventurer: this.newNPC.isAdvent,
-          role: this.newNPC.role,
-          user_id: this.getUser.id
-        }
-      };
-      const npcOptions = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-          Accept: "application/json"
-        },
-        body: JSON.stringify(newNPC)
-      };
-      console.log("npcOptions", npcOptions);
-      fetch("http://localhost:3000/api/characters", npcOptions)
-        .then(res => res.json())
-        .then(data => {
-          console.log("data from POST", data.user);
-          this.saveUser(data.user);
-          this.newNPC = {};
-        });
+      if (this.authorized) {
+        const token = JSON.parse(window.localStorage.getItem("token"));
+
+        const newNPC = {
+          character: {
+            name: this.newNPC.name,
+            race: this.newNPC.race,
+            is_adventurer: this.newNPC.isAdvent,
+            role: this.newNPC.role,
+            user_id: this.getUser.id
+          }
+        };
+
+        const npcOptions = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+            Accept: "application/json"
+          },
+          body: JSON.stringify(newNPC)
+        };
+
+        fetch("http://localhost:3000/api/characters", npcOptions)
+          .then(res => res.json())
+          .then(data => {
+            this.saveUser(data.user);
+            this.newNPC = {};
+          });
+      } else {
+        this.error = "Please login to save character.";
+        this.showModal = true;
+      }
     },
     clearNPC() {
-      console.log(
-        "local storage test",
-        window.localStorage.getItem("test") === null
-      );
       this.newNPC = {};
+    },
+    checkAuth() {
+      window.localStorage.getItem("token") !== null
+        ? (this.authorized = true)
+        : (this.authorized = false);
+    },
+    closeModal() {
+      this.showModal = false;
     }
   },
-  created() {}
+  created() {
+    this.checkAuth();
+  }
 };
 </script>
 
@@ -81,5 +103,24 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+.home .auth-error {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+  background: #fff;
+  border: 7px solid var(--primary-color);
+  border-radius: 5px;
+  box-shadow: 0px 0px 10rem 1rem #000;
+  padding: 1rem;
+}
+.home .auth-error h2 {
+  margin: 1rem 0;
+  font-weight: 300;
 }
 </style>

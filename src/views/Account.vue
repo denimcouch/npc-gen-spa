@@ -1,6 +1,6 @@
 <template>
   <main id="account" class="account-page">
-    Account
+    <h1 class="title">{{ this.getUser.username }}</h1>
     <NPCs />
   </main>
 </template>

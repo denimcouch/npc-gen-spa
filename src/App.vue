@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "App",
@@ -22,12 +22,29 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["saveUser"]),
     checkToken() {
       return window.localStorage.getItem("token") === null;
+    },
+    autoLogin() {
+      if (this.checkToken()) {
+        return null;
+      } else {
+        const token = JSON.parse(window.localStorage.getItem("token"));
+        fetch("http://localhost:3000/api/auto_login", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+          .then(res => res.json())
+          .then(data => {
+            this.saveUser(data.user);
+          });
+      }
     }
   },
   created() {
-    console.log("token?", this.checkToken());
+    this.autoLogin();
   }
 };
 </script>

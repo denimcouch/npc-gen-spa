@@ -41,7 +41,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["fetchUser"]),
+    ...mapActions(["saveUser"]),
     loginUser() {
       this.error = "";
       const user = this.user;
@@ -69,7 +69,7 @@ export default {
             this.error = data.error;
           } else {
             window.localStorage.setItem("token", JSON.stringify(data.token));
-            this.fetchUser(data.user);
+            this.saveUser(data.user);
           }
         })
         .catch(error => console.log(error));

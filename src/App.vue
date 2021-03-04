@@ -1,26 +1,45 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/" v-bind:user="this.user">Home</router-link> |
+      <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
-      <router-link to="/login" v-on:login-user="loginUser">Login</router-link>
+      <router-link v-if="this.checkToken()" to="/login">Login</router-link>
+      <router-link v-else to="/account">Account</router-link>
     </div>
     <router-view />
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   name: "App",
-  data() {
-    return {
-      user: {}
-    };
-  },
+  computed: mapGetters(["getUser"]),
   methods: {
-    loginUser(user) {
-      console.log("user passed up to App", user);
+    ...mapActions(["saveUser"]),
+    checkToken() {
+      return window.localStorage.getItem("token") === null;
+    },
+    autoLogin() {
+      if (this.checkToken()) {
+        return null;
+      } else {
+        const token = JSON.parse(window.localStorage.getItem("token"));
+        fetch("http://localhost:3000/api/auto_login", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+          .then(res => res.json())
+          .then(data => {
+            this.saveUser(data.user);
+          });
+      }
     }
+  },
+  created() {
+    this.autoLogin();
   }
 };
 </script>
@@ -87,6 +106,12 @@ export default {
 }
 
 .btn--delete {
+  background: #fff;
+  border-color: #d33d32;
+  color: #d33d32;
+}
+
+.btn--delete:hover {
   background: #d33d32;
   color: #fff;
 }

@@ -8,7 +8,7 @@
       </p>
     </div>
     <div class="options">
-      <button @click="$emit('add-npc', newNPC)" class="btn btn--save">
+      <button @click="$emit('add-npc')" class="btn btn--save">
         Save Character
       </button>
       <button @click="$emit('clear-npc')" class="btn btn--delete">Clear</button>

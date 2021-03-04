@@ -11,10 +11,7 @@ const getters = {
 };
 
 const actions = {
-  fetchUser({ commit }, user) {
-    commit("setUser", user);
-  },
-  createUser({ commit }, user) {
+  saveUser({ commit }, user) {
     commit("setUser", user);
   }
 };

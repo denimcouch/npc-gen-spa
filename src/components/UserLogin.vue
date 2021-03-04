@@ -15,7 +15,7 @@
       <div class="form-input">
         <label for="password">Password</label>
         <input
-          type="text"
+          type="password"
           v-model="user.password"
           name="password"
           placeholder="Enter password"

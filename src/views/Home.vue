@@ -62,10 +62,15 @@ export default {
         });
     },
     clearNPC() {
+      console.log("local storage test", window.localStorage.getItem("test") === null);
       this.newNPC = {};
     }
   },
-  created() {}
+  created() {
+    if (window.localStorage.getItem("token") !== null) {
+      console.log("hello!");
+    }
+  }
 };
 </script>
 

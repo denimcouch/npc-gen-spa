@@ -16,6 +16,7 @@ export default {
     logoutUser() {
       window.localStorage.removeItem("token");
       this.saveUser({});
+      this.$router.push("/login");
     }
   }
 };

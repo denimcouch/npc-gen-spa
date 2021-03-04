@@ -25,13 +25,15 @@ const routes = [
     component: () => import("../views/Login.vue")
   },
   {
-    path: "/account",
-    name: "Account",
-    component: () => import("../views/Account.vue")
+    path: "/profile/:id",
+    name: "Profile",
+    component: () => import("../views/Profile.vue")
   }
 ];
 
 const router = new VueRouter({
+  mode: "history",
+  base: process.env.BASE_URL,
   routes
 });
 

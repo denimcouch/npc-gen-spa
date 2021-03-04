@@ -1,6 +1,6 @@
 <template>
-  <main id="account">
-    <div class="account-page">
+  <main id="profile">
+    <div class="profile-page">
       <UserInfo v-bind:user="this.getUser" />
       <NPCs v-bind:npcs="this.getUser.characters" />
     </div>
@@ -13,7 +13,7 @@ import UserInfo from "../components/UserInfo";
 import NPCs from "../components/NPCs";
 
 export default {
-  name: "Account",
+  name: "Profile",
   components: {
     UserInfo,
     NPCs
@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style>
-.account-page {
+.profile-page {
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-gap: 1rem;

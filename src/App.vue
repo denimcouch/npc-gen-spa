@@ -4,7 +4,11 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link v-if="this.checkToken()" to="/login">Login</router-link>
-      <router-link v-else to="/account">Account</router-link>
+      <router-link
+        v-else
+        :to="{ name: 'Profile', params: { id: this.getUser.username } }"
+        >Profile</router-link
+      >
     </div>
     <router-view />
   </div>

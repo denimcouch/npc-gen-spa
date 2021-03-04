@@ -35,33 +35,33 @@ export default {
       this.newNPC = npc;
     },
     addNPC() {
-      const newNPC = {
-        name: this.newNPC.name,
-        race: this.newNPC.race,
-        is_advent: this.newNPC.isAdvent,
-        role: this.newNPC.role
+      const npc = {
+        ...this.newNPC
       };
-      const npcOptions = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: JSON.stringify(newNPC)
-      };
-      fetch("http://127.0.0.1:8000/api/npcs/", npcOptions)
-        .then(res => res.json())
-        .then(npc => (this.npcs = [...this.npcs, npc]));
+      // const newNPC = {
+      //   name: this.newNPC.name,
+      //   race: this.newNPC.race,
+      //   is_advent: this.newNPC.isAdvent,
+      //   role: this.newNPC.role
+      // };
+      // const npcOptions = {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Accept: "application/json"
+      //   },
+      //   body: JSON.stringify(newNPC)
+      // };
+      // fetch("http://localhost:3000/api/characters", npcOptions)
+      //   .then(res => res.json())
+      //   .then(npc => (this.npcs = [...this.npcs, npc]));
+      this.npcs = [...this.npcs, npc];
     },
     clearNPC() {
       this.newNPC = {};
     }
   },
-  created() {
-    fetch("http://127.0.0.1:8000/api/npcs/")
-      .then(res => res.json())
-      .then(npcs => (this.npcs = npcs));
-  }
+  created() {}
 };
 </script>
 

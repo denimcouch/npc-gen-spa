@@ -18,7 +18,7 @@ export default {
       this.saveUser({});
     }
   }
-}
+};
 </script>
 
 <style>

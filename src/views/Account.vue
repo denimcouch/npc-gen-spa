@@ -25,7 +25,8 @@ export default {
 <style>
 .account-page {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 1rem;
   max-width: 1200px;
   margin: auto;
 }

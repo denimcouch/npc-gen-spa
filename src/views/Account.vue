@@ -3,11 +3,12 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
-  name:"Account"
-}
+  name: "Account",
+  computed: mapGetters(["getUser"])
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

@@ -3,13 +3,12 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/account">Account</router-link>
+      <router-link v-if="this.checkToken()" to="/login">Login</router-link>
+      <router-link v-else to="/account">Account</router-link>
     </div>
     <router-view />
   </div>
 </template>
-
 
 <script>
 import { mapGetters } from "vuex";
@@ -17,10 +16,18 @@ import { mapGetters } from "vuex";
 export default {
   name: "App",
   computed: mapGetters(["getUser"]),
+  data() {
+    return {
+      userNav: false
+    };
+  },
   methods: {
     checkToken() {
       return window.localStorage.getItem("token") === null;
     }
+  },
+  created() {
+    console.log("token?", this.checkToken());
   }
 };
 </script>

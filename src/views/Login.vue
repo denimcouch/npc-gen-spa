@@ -39,7 +39,8 @@ export default {
 }
 
 .user-form {
-  width: 12rem;
+  width: 15rem;
+  padding: 0 0.5rem;
 }
 
 .user-form .form-input {
@@ -55,7 +56,7 @@ export default {
 
 .user-form .form-input label::after {
   content: "*";
-  color: rgb(204, 1, 1);
+  color: red;
 }
 
 .user-form .form-input input {
@@ -68,5 +69,12 @@ export default {
   font-size: 1rem;
   width: 100%;
   margin: auto;
+}
+
+.error {
+  color: red;
+  margin: auto;
+  padding: 0.5rem;
+  font-size: 0.9rem;
 }
 </style>

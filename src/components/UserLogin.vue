@@ -65,9 +65,7 @@ export default {
       fetch("http://localhost:3000/api/login", postOptions)
         .then(res => res.json())
         .then(data => {
-          console.log(data.error);
           if (data.error !== undefined) {
-            console.log("wrong");
             this.error = data.error;
           } else {
             window.localStorage.setItem("token", JSON.stringify(data.token));

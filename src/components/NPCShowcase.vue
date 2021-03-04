@@ -67,29 +67,6 @@ export default {
   justify-content: center;
 }
 
-.btn {
-  display: inline-block;
-  border: none;
-  padding: 0.5rem 1.5rem;
-  margin: 0 0.5rem;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  font-weight: 700;
-  background: var(--primary-color);
-  color: #fff;
-  transition: 0.2s ease-in-out;
-}
-
-.btn:focus,
-.btn:active {
-  outline-color: transparent;
-}
-
-.btn--delete {
-  background: #d33d32;
-  color: #fff;
-}
-
 .hidden {
   display: none;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <main class="home">
     <CreateNpc v-on:show-npc="showNPC" />
     <NPCShowcase
       v-bind:newNPC="newNPC"
@@ -7,7 +7,7 @@
       v-on:clear-npc="clearNPC"
       v-if="this.newNPC.name != undefined"
     />
-  </div>
+  </main>
 </template>
 
 <script>

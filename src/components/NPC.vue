@@ -12,12 +12,11 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "NPC",
   props: ["npc"],
-  computed: mapGetters(["getUser"]),
   methods: {
     ...mapActions(["saveUser"]),
     deleteChar(npc) {

@@ -103,6 +103,7 @@ export default {
 .home {
   max-width: 1100px;
   margin: auto;
+  padding: 4rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -122,7 +123,19 @@ export default {
   border-radius: 5px;
   box-shadow: 0px 0px 10rem 1rem #000;
   padding: 1rem;
+  opacity: 0;
+  animation: fadein 0.2s ease forwards;
 }
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .home .auth-error h2 {
   margin: 1rem 0;
   font-weight: 300;

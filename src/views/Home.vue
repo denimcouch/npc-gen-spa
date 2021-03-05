@@ -1,6 +1,6 @@
 <template>
   <main class="home">
-    <h1>Your party's new obssesion is one click away</h1>
+    <h1>Your adventure's new plot hook is one click away</h1>
     <font-awesome-icon icon="chevron-down" class="pointer fa-2x" />
     <CreateNpc v-on:show-npc="showNPC" />
     <NPCShowcase
@@ -151,10 +151,20 @@ export default {
 }
 
 @keyframes bounce {
-  0% { transform: translateY(0%); }
-  25% { transform: translateY(-5%); }
-  50% { transform: translateY(-20%); }
-  75% { transform: translateY(-5%); }
-  100% { transform: translateY(0%); }
+  0% {
+    transform: translateY(0%);
+  }
+  25% {
+    transform: translateY(-5%);
+  }
+  50% {
+    transform: translateY(-20%);
+  }
+  75% {
+    transform: translateY(-5%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
 }
 </style>

@@ -34,6 +34,8 @@ export default {
   justify-content: center;
   border-radius: 5px;
   background: #f6f6f6;
+  opacity: 0;
+  animation: fadein 0.4s ease-in-out forwards;
 }
 
 .text--primary {
@@ -48,6 +50,8 @@ export default {
 .content__race {
   font-size: 1.3rem;
   font-weight: 400;
+  opacity: 0;
+  animation: fadein 0.4s ease-in-out 0.8s forwards;
 }
 
 .content__name {
@@ -55,16 +59,22 @@ export default {
   font-size: 2.2rem;
   margin: 1rem 0;
   padding: 0 0.2rem;
+  opacity: 0;
+  animation: fadein 0.4s ease-in-out 1.6s forwards;
 }
 
 .content__role {
   font-size: 1.3rem;
+  opacity: 0;
+  animation: fadein 0.4s ease-in-out 2.4s forwards;
 }
 
 .options {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  animation: fadein 0.4s ease-in-out 3.2s forwards;
 }
 
 .hidden {

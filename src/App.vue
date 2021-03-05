@@ -1,14 +1,19 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link v-if="this.checkToken()" to="/login">Login</router-link>
-      <router-link
-        v-else
-        :to="{ name: 'Profile', params: { id: this.getUser.username } }"
-        >Profile</router-link
-      >
+      <div class="app__title">
+        <h1><span class="text--primary">Char</span>Gen</h1>
+      </div>
+      <div class="routes">
+        <router-link to="/">Home</router-link> |
+        <router-link to="/about">About</router-link> |
+        <router-link v-if="this.checkToken()" to="/login">Login</router-link>
+        <router-link
+          v-else
+          :to="{ name: 'Profile', params: { id: this.getUser.username } }"
+          >Profile</router-link
+        >
+      </div>
     </div>
     <router-view />
   </div>
@@ -68,7 +73,15 @@ export default {
 
 #nav {
   padding: 30px;
-  margin-bottom: 2rem;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1300px;
+}
+
+#nav a {
+  font-size: 1.3rem;
 }
 
 a {

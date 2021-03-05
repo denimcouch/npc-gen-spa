@@ -1,5 +1,7 @@
 <template>
   <main class="home">
+    <h1>Your adventure's new plot hook is one click away</h1>
+    <font-awesome-icon icon="chevron-down" class="pointer fa-2x" />
     <CreateNpc v-on:show-npc="showNPC" />
     <NPCShowcase
       v-bind:newNPC="newNPC"
@@ -103,6 +105,7 @@ export default {
 .home {
   max-width: 1100px;
   margin: auto;
+  padding: 4rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -122,9 +125,46 @@ export default {
   border-radius: 5px;
   box-shadow: 0px 0px 10rem 1rem #000;
   padding: 1rem;
+  opacity: 0;
+  animation: fadein 0.2s ease forwards;
 }
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .home .auth-error h2 {
   margin: 1rem 0;
   font-weight: 300;
+}
+
+.pointer {
+  animation-name: bounce;
+  animation-duration: 1.2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0%);
+  }
+  25% {
+    transform: translateY(-5%);
+  }
+  50% {
+    transform: translateY(-20%);
+  }
+  75% {
+    transform: translateY(-5%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
 }
 </style>

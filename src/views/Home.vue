@@ -121,10 +121,10 @@ export default {
   justify-content: space-between;
   z-index: 10;
   background: #fff;
-  border: 7px solid var(--primary-color);
+  border: 5px solid var(--primary-color);
   border-radius: 5px;
-  box-shadow: 0px 0px 10rem 1rem #000;
-  padding: 1rem;
+  box-shadow: 0px 0px 50px 25px #000;
+  padding: 1.5rem;
   opacity: 0;
   animation: fadein 0.2s ease forwards;
 }

@@ -9,17 +9,11 @@
       v-on:clear-npc="clearNPC"
       v-if="this.newNPC.name != undefined"
     />
-    <div v-if="this.showModal" class="auth-error">
-      <h2>{{ this.error }}</h2>
-      <div class="auth-error--options">
-        <router-link class="btn" to="/login">Login</router-link>
-        <button @click="closeModal" class="btn btn--delete">Close</button>
-      </div>
-    </div>
   </main>
 </template>
 
 <script>
+import swal from "sweetalert";
 import CreateNpc from "../components/CreateNpc";
 import NPCShowcase from "@/components/NPCShowcase";
 import { mapGetters, mapActions } from "vuex";
@@ -34,9 +28,7 @@ export default {
   data() {
     return {
       newNPC: {},
-      authorized: false,
-      showModal: false,
-      error: ""
+      authorized: false
     };
   },
   methods: {
@@ -73,14 +65,21 @@ export default {
           .then(data => {
             this.saveUser(data.user);
             this.newNPC = {};
-            this.$router.push({
-              name: "Profile",
-              params: { id: data.user.username }
+            swal({
+              title: "Character successfully saved!",
+              icon: "success"
             });
+            // this.$router.push({
+            //   name: "Profile",
+            //   params: { id: data.user.username }
+            // });
           });
       } else {
-        this.error = "Please login to save character.";
-        this.showModal = true;
+        swal({
+          icon: "warning",
+          title: "Please login to save character.",
+          buttons: true
+        });
       }
     },
     clearNPC() {
@@ -113,22 +112,6 @@ export default {
   position: relative;
 }
 
-.home .auth-error {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 10;
-  background: #fff;
-  border: 5px solid var(--primary-color);
-  border-radius: 5px;
-  box-shadow: 0px 0px 50px 25px #000;
-  padding: 1.5rem;
-  opacity: 0;
-  animation: fadein 0.2s ease forwards;
-}
-
 @keyframes fadein {
   from {
     opacity: 0;
@@ -136,11 +119,6 @@ export default {
   to {
     opacity: 1;
   }
-}
-
-.home .auth-error h2 {
-  margin: 1rem 0;
-  font-weight: 300;
 }
 
 .pointer {

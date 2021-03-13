@@ -69,7 +69,6 @@ export default {
       if (race.split(" ").length > 1) {
         // Split the race string and only take the last index
         const raceInfo = race.split(" ")[1];
-        console.log(raceInfo);
         // Find the names object for given race
         const nameData = names.filter(nameRace => nameRace.race == raceInfo)[0];
         // Randomly choose first name

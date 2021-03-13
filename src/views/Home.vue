@@ -69,17 +69,21 @@ export default {
               title: "Character successfully saved!",
               icon: "success"
             });
-            // this.$router.push({
-            //   name: "Profile",
-            //   params: { id: data.user.username }
-            // });
           });
       } else {
         swal({
           icon: "warning",
           title: "Please login to save character.",
-          buttons: true
-        });
+          buttons: {
+            back: {
+              text: "Back",
+              closeModal: true
+            },
+            login: {
+              text: "Login"
+            }
+          }
+        }).then(() => this.$router.push("/login"));
       }
     },
     clearNPC() {

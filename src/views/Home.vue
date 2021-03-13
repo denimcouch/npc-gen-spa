@@ -77,13 +77,28 @@ export default {
           buttons: {
             back: {
               text: "Back",
-              closeModal: true
+              closeModal: true,
+              value: "back"
             },
             login: {
-              text: "Login"
+              text: "Login",
+              value: "login"
             }
           }
-        }).then(() => this.$router.push("/login"));
+        }).then(value => {
+          switch (value) {
+            case "back":
+              swal.close();
+              break;
+
+            case "login":
+              this.$router.push("/login");
+              break;
+
+            default:
+              swal.close();
+          }
+        });
       }
     },
     clearNPC() {

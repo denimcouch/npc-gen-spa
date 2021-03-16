@@ -11,7 +11,9 @@
       <h2>Want to contribute?</h2>
       <p>
         Join us on the
-        <a href="https://github.com/denimcouch/npc-gen-spa" target="_blank">CharGen Github</a>.
+        <a href="https://github.com/denimcouch/npc-gen-spa" target="_blank"
+          >CharGen Github</a
+        >.
       </p>
     </div>
   </main>

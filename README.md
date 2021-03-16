@@ -1,12 +1,11 @@
-# CharGen (working title)
+# CharGen (working title) [![Netlify Status](https://api.netlify.com/api/v1/badges/29702d48-90c0-480b-9250-434aac5133d9/deploy-status)](https://app.netlify.com/sites/inspiring-volhard-5a38ac/deploys)
 CharGen is a tool that generates random character names for Game Masters to use in their tabletop rpg adventures.
 I built CharGen how to develop SPAs with Vue.js, and to gain a better understanding of state management and user authentication.
 CharGen relies on Vuex for state management, and JWT for user auth.  
 
 CharGen uses a Rails API as its backend. The repo for the backend can be found [here](https://github.com/denimcouch/npc-api-rails).  
 
-CharGen is live!  
-[![Netlify Status](https://api.netlify.com/api/v1/badges/29702d48-90c0-480b-9250-434aac5133d9/deploy-status)](https://app.netlify.com/sites/inspiring-volhard-5a38ac/deploys)
+CharGen is live [here](https://inspiring-volhard-5a38ac.netlify.app/)!  
 
 ## Resources
 [Vue.js Docs](https://vuejs.org/v2/guide/) - CharGen is built using Vue v2.x 

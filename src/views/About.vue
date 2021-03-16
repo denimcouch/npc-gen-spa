@@ -11,7 +11,7 @@
       <h2>Want to contribute?</h2>
       <p>
         Join us on the
-        <a href="https://github.com/denimcouch/npc-gen-spa">CharGen Github</a>.
+        <a href="https://github.com/denimcouch/npc-gen-spa" target="_blank">CharGen Github</a>.
       </p>
     </div>
   </main>
@@ -19,7 +19,7 @@
 
 <style>
 .about {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: auto;
   text-align: left;
   line-height: 1.5;

@@ -6,13 +6,16 @@
       <p v-if="npc.is_adventurer" class="npc__role">{{ npc.role }}</p>
     </div>
     <div class="npc-options">
-      <button @click="deleteChar(npc)" class="btn btn--delete">x</button>
+      <button @click="deleteChar(npc)" class="btn btn--delete">
+        <font-awesome-icon icon="trash-alt" />
+      </button>
     </div>
   </div>
 </template>
 
 <script>
 import { mapActions } from "vuex";
+import swal from "sweetalert";
 
 export default {
   name: "NPC",
@@ -20,27 +23,44 @@ export default {
   methods: {
     ...mapActions(["saveUser"]),
     deleteChar(npc) {
-      const token = JSON.parse(window.localStorage.getItem("token"));
+      console.log(npc);
+      swal({
+        title: "Are you sure?",
+        text: "You will not be able to recover this character once deleted!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then(willDelete => {
+        if (willDelete) {
+          const token = JSON.parse(window.localStorage.getItem("token"));
 
-      let delOptions = {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          character: {
-            id: npc.id
-          }
-        })
-      };
+          let delOptions = {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+              Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({
+              character: {
+                id: npc.id
+              }
+            })
+          };
 
-      fetch(`http://localhost:3000/api/characters/${npc.id}`, delOptions)
-        .then(res => res.json())
-        .then(data => {
-          this.saveUser(data.user);
-        });
+          fetch(`http://localhost:3000/api/characters/${npc.id}`, delOptions)
+            .then(res => res.json())
+            .then(data => {
+              this.saveUser(data.user);
+            });
+
+          swal("Poof! Your character has been deleted.", {
+            icon: "success"
+          });
+        } else {
+          swal.close();
+        }
+      });
     }
   }
 };

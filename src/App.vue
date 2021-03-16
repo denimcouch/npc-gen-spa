@@ -56,6 +56,7 @@ export default {
 <style>
 :root {
   --primary-color: #32d395;
+  --font-family: Avenir, Helvetica, Arial, sans-serif;
 }
 * {
   margin: 0;
@@ -64,7 +65,7 @@ export default {
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -130,6 +131,23 @@ a:hover {
 
 .btn--delete:hover {
   background: #d33d32;
+  color: #fff;
+}
+
+.swal-modal {
+  border: 3px solid var(--primary-color);
+  font-family: var(--font-family);
+}
+
+.swal-button--confirm {
+  background: #fff;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  transition: 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.swal-button--confirm:hover {
+  background: var(--primary-color);
   color: #fff;
 }
 </style>

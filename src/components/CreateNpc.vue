@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import { names } from "../data/names";
-import { races } from "../data/races";
-import { roles } from "../data/roles";
+import { names } from "./charData/names";
+import { races } from "./charData/races";
+import { roles } from "./charData/roles";
 
 export default {
   name: "CreateNpc",

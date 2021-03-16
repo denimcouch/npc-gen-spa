@@ -23,7 +23,6 @@ export default {
   methods: {
     ...mapActions(["saveUser"]),
     deleteChar(npc) {
-      console.log(npc);
       swal({
         title: "Are you sure?",
         text: "You will not be able to recover this character once deleted!",

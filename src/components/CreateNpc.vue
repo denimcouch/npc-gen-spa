@@ -56,11 +56,16 @@ export default {
       this.npc.role = roles[Math.floor(Math.random() * roles.length)];
     },
     chooseName(race) {
-      if (race === "Half-Elf" && Date.now() % 2 == 0) {
-        race = "Half Elf";
-      } else {
-        race = "Half Human";
+      // Restructures Half-Elf string to work in with the generator below
+      // Will use Human or Elf names depending on if the time is odd or even
+      if (race === "Half-Elf") {
+        if (Date.now() % 2 == 0) {
+          race = "Half Elf";
+        } else {
+          race = "Half Human";
+        }
       }
+
       if (race.split(" ").length > 1) {
         // Split the race string and only take the last index
         const raceInfo = race.split(" ")[1];
